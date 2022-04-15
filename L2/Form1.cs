@@ -16,8 +16,7 @@ using System.Text.RegularExpressions;
 using L2.Memento;
 
 namespace L2
-{
-    
+{    
     public partial class Form1 : Form
     {
         public List<Account> accounts;
@@ -35,10 +34,8 @@ namespace L2
         }
         private void Tick(object sender, EventArgs e)
         {
-            toolStripLabel1.Text = DateTime.Now.ToString();
-                
+            toolStripLabel1.Text = DateTime.Now.ToString();                
         }
-
         private void balance_Scroll(object sender, EventArgs e)
         {
             label3.Text = $"Баланс: {(sender as TrackBar).Value}";
@@ -106,7 +103,6 @@ namespace L2
                 Account decorator = new Decorator.Decorator(accounts[0]);
                 listBox1.Items.Add(decorator);
 
-
             }
         }
         public Saf SaveData()
@@ -117,7 +113,6 @@ namespace L2
         {
             accounts= data.accounts;
         }
-
         private void buttonSave_Click(object sender, EventArgs e)
         { 
             XmlSerializer serializer = new XmlSerializer(typeof(List<Account>));
@@ -126,7 +121,6 @@ namespace L2
                 serializer.Serialize(stream, accounts);
             }
         }
-
         private void buttonLoad_Click(object sender, EventArgs e)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(List<Account>));
@@ -145,7 +139,6 @@ namespace L2
             var Search = new Form2(accounts);
             Search.ShowDialog();
         }
-
         private void поНомеруToolStripMenuItem_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
@@ -160,7 +153,6 @@ namespace L2
                 serializer.Serialize(stream, accounts);
             }
         }
-
         private void поГодуОткрытияToolStripMenuItem_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
@@ -176,7 +168,6 @@ namespace L2
                 serializer.Serialize(stream, accounts);
             }
         }
-
         private void типВкладаToolStripMenuItem_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
@@ -192,17 +183,14 @@ namespace L2
                 serializer.Serialize(stream, accounts);
             }
         }
-
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Bank version: 1.0.0\nDeveloper: SED");
         }
-
         private void toolStripMenuItem5_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void name_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!Regex.Match(e.KeyChar.ToString(), @"[а-яА-Я]|[a-zA-Z]").Success)
@@ -210,7 +198,6 @@ namespace L2
                 e.Handled = true;
             }
         }
-
         private void num_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!Regex.Match(e.KeyChar.ToString(), @"[0-9]").Success)
@@ -218,7 +205,6 @@ namespace L2
                 e.Handled = true;
             }
         }
-
         private void очистить_Click(object sender, EventArgs e)
         {
             balance.Value = 0;
@@ -229,13 +215,11 @@ namespace L2
             sms.Checked = false;
             label3.Text = $"Баланс ";
         }
-
         private void поиск_Click(object sender, EventArgs e)
         {
             var Search = new Form2(accounts);
             Search.ShowDialog();
         }
-
         private void сортировка_Click(object sender, EventArgs e)
         {
             hist.Form.Push(SaveData());
@@ -255,7 +239,6 @@ namespace L2
         {
             toolStrip1.Visible = true;
         }
-
         private void toolStripLabel2_Click(object sender, EventArgs e)
         {
             toolStrip1.Visible = false;
@@ -265,7 +248,6 @@ namespace L2
             Account account = accounts[0].Clone() as Account;
             listBox1.Items.Add(account);
         }
-
         private void toolStripLabel3_Click(object sender, EventArgs e)
         {
             try
