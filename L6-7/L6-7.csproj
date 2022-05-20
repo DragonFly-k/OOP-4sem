@@ -81,11 +81,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Infrastructure\Resources\Dark.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Infrastructure\Resources\Eng.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Infrastructure\Resources\light.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Infrastructure\Resources\Rus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Infrastructure\Resources\UserControl1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -102,6 +114,9 @@
     <Compile Include="Infrastructure\Files\IDialogService.cs" />
     <Compile Include="Infrastructure\Files\IFileService.cs" />
     <Compile Include="Infrastructure\Files\JsonFileService.cs" />
+    <Compile Include="Infrastructure\Resources\UserControl1.xaml.cs">
+      <DependentUpon>UserControl1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\ApplicationViewModel.cs" />
     <Compile Include="Models\Watch.cs" />
     <Compile Include="Models\Watchviewmodel.cs" />

@@ -2,13 +2,15 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"     
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"    
+        xmlns:uc="clr-namespace:L6_7.Infrastructure.Resources"
         xmlns:p = "clr-namespace:L6_7.Properties"
         xmlns:system="clr-namespace:System;assembly=System.Runtime"
         xmlns:local="clr-namespace:L6_7"
         xmlns:vm="clr-namespace:L6_7.Models"
         mc:Ignorable="d"
-        Title="MainWindow" Height="464" Width="477" Background="Lavender">
+        Title="MainWindow" Height="464" Width="477" Style="{DynamicResource Wind}">
+
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="14" />
@@ -17,8 +19,38 @@
             <Setter Property="FontSize" Value="14" />
         </Style>
         <Style TargetType="Button">
-            <Setter Property="Width" Value="40" />
-            <Setter Property="Margin" Value="5" />
+            <Style.Setters>
+                <Setter Property="Width" Value="40" />
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="Button.Margin" Value="10" />
+            </Style.Setters>
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsMouseOver" Value="True" />
+                        <Condition Property="IsPressed" Value="True" />
+                    </MultiTrigger.Conditions>
+                    <MultiTrigger.Setters>
+                        <Setter Property="FontSize" Value="14" />
+                        <Setter Property="Foreground" Value="Coral"/>
+                        <Setter Property="Focusable" Value="True" />
+                    </MultiTrigger.Setters>
+                </MultiTrigger>
+                <EventTrigger RoutedEvent="Click">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Width" Duration="0:0:1" To="220" AutoReverse="True" />
+                                <DoubleAnimation Storyboard.TargetProperty="Height" Duration="0:0:1" To="40" AutoReverse="True" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+                <DataTrigger Binding="{Binding ElementName=checkBox1, Path=IsChecked}"
+                        Value="True">
+                    <Setter Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+            </Style.Triggers>
         </Style>
         <Cursor x:Key="NewCursor">D:\универ\ооп\oop-4sem\L6-7\RainbowAero\Hand.ani</Cursor>
     </Window.Resources>
@@ -61,6 +93,8 @@
                 </MenuItem.Icon>
                 <MenuItem x:Name="Рус" Header="{DynamicResource Рус}" Command="{Binding ChangeLanguageCommand}" CommandParameter="Рус" />
                 <MenuItem x:Name="Анг" Header="{DynamicResource Анг}" Command="{Binding ChangeLanguageCommand}" CommandParameter="Анг"/>
+                <MenuItem x:Name="dark" Header="dark" Command="{Binding ChangeThemeCommand}" CommandParameter="Рус" />
+                <MenuItem x:Name="light" Header="light" Command="{Binding ChangeThemeCommand}" CommandParameter="Анг"/>
             </MenuItem>
         </Menu>
         <ListBox Grid.Column="0" Grid.Row="1" ItemsSource="{Binding SearchedWatches, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedWatch}" Margin="8,0,8,73" Grid.RowSpan="2"
@@ -88,8 +122,10 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,8,0,0">
-            <Button Command="{Binding AddCommand}" Height="29">+</Button>
+            <Button Command="{Binding AddCommand}" Height="29" >+</Button>
             <Button Command="{Binding RemoveCommand}"  CommandParameter="{Binding SelectedWatch}" Height="29">-</Button>
+            <CheckBox x:Name="checkBox1" Content="Disable"  Margin="0 25 0 0"/>
+            <uc:UserControl1 Margin="10 20 0 0"/>
         </StackPanel>
 
 

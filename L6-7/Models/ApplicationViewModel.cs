@@ -46,7 +46,18 @@ namespace L6_7.Models
                   }));
             }
         }
+        private static RoutedUICommand _undoCommand;
+        private static RoutedUICommand _redoCommand;
+        public static RoutedUICommand RedoCommand
+        {
+            get { return _redoCommand; }
+        }
 
+        public static RoutedUICommand UndoCommand
+        {
+            get { return _undoCommand; }
+        }
+        
         private RelayCommand openCommand;
         public RelayCommand OpenCommand
         {
@@ -190,6 +201,22 @@ namespace L6_7.Models
                     break;
             }
         }
+        public ICommand ChangeThemeCommand { get; }
+        private void OnChangeThemeCommandExecuted(object o)
+        {
+            string lang = o as string;
+            switch (lang)
+            {
+                case "Анг":
+                    Application.Current.Resources.MergedDictionaries[1].Source = new Uri("./Infrastructure/Resources/light.xaml", UriKind.RelativeOrAbsolute);
+                    break;
+                case "Рус":
+                    Application.Current.Resources.MergedDictionaries[1].Source = new Uri("./Infrastructure/Resources/dark.xaml", UriKind.RelativeOrAbsolute);
+                    break;
+                default:
+                    break;
+            }
+        }
         public ObservableCollection<Watch> SearchedWatches { get => searchedWatches; set => searchedWatches = value; }
 
         public ApplicationViewModel(IDialogService dialogService, IFileService fileService)
@@ -212,8 +239,10 @@ namespace L6_7.Models
             searchedWatches = new ObservableCollection<Watch>(Watchs);
             CloseAppComm = new RelayCommand(OnCloseAppCommExecute, CanCloseAppCommExecute);
             ChangeLanguageCommand = new RelayCommand(OnChangeLanguageCommandExecuted);
+            ChangeThemeCommand = new RelayCommand(OnChangeThemeCommandExecuted);
+           
         }
-       
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
