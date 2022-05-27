@@ -1,0 +1,30 @@
+﻿<Window x:Class="L9.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:L9"
+         xmlns:controls="clr-namespace:L9.UserControls"
+        mc:Ignorable="d"
+        Background="AliceBlue"
+        Title="MainWindow" Height="250" Width="676">
+
+    <Window.CommandBindings>
+        <CommandBinding Command="local:MyCommand.Requery" Executed="CommandBinding_Executed"></CommandBinding>
+    </Window.CommandBindings>
+
+    <Grid Margin="0,0,0,-6">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="359*"/>
+            <ColumnDefinition Width="441*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="108*"/>
+            <RowDefinition Height="109*"/>
+        </Grid.RowDefinitions>
+
+        <controls:UserControl1 Grid.Row="0" Margin="20,10,0,20" Loaded="UserControl1_Loaded" Grid.RowSpan="2"/>
+        <controls:Events Grid.Column="1"  HorizontalAlignment="Left" Margin="31,14,0,14" Width="334"/>
+        <Button Grid.Column="1" Content="Requery" Command="local:MyCommand.Requery" Margin="35,30,262,40" Grid.Row="1" RenderTransformOrigin="0.601,0.581"/>
+    </Grid>
+</Window>
