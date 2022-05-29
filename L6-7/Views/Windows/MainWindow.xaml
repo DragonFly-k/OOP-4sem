@@ -132,13 +132,13 @@
         <StackPanel Grid.Row="1" Grid.Column="1" DataContext="{Binding  SelectedWatch}" Margin="0,0,0,51" Grid.RowSpan="2" Cursor="{StaticResource NewCursor}">
             <TextBlock x:Name="Выбранный" Text="{DynamicResource Выбранный}"  Margin="0 2 0 0"/>
             <TextBlock x:Name="Модель"  Text="{DynamicResource Модель}" />
-            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"  Margin="0 0 5 0"/>
+            <TextBox Text="{Binding Path =Name, UpdateSourceTrigger=PropertyChanged}"  Margin="0 0 5 0"/>
             <TextBlock x:Name="Производитель" Text="{DynamicResource Производитель}" />
-            <TextBox Text="{Binding Country, UpdateSourceTrigger=PropertyChanged}" Margin="0 0 5 0"/>
+            <TextBox Text="{Binding Path=Country, UpdateSourceTrigger=PropertyChanged}" Margin="0 0 5 0"/>
             <TextBlock x:Name="Цена"  Text="{DynamicResource Цена}" />
-            <TextBox Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}" Margin="0 0 5 0" />
+            <TextBox Text="{Binding Path=Price, UpdateSourceTrigger=PropertyChanged}" Margin="0 0 5 0" />
             <TextBlock x:Name="Фото"  Text="{DynamicResource Фото}" />
-            <Image  Source="{Binding DisplayedImage, UpdateSourceTrigger=PropertyChanged}" Height="150" Width="150" HorizontalAlignment="Stretch" />
+            <Image  Source="{Binding Path=DisplayedImage, UpdateSourceTrigger=PropertyChanged}" Height="150" Width="150" HorizontalAlignment="Stretch" />
         </StackPanel>
     </Grid>
 </Window>   
