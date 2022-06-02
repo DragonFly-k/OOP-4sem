@@ -12,8 +12,8 @@
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
-    
-    <DockPanel>
+
+    <!--<DockPanel>
         <Grid DockPanel.Dock="Bottom" Height="50">
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center">
@@ -98,6 +98,80 @@
                 </DockPanel>
             </Grid>
         </Grid>
-    </DockPanel>
+    </DockPanel>-->
+    <DockPanel>
+        <Grid DockPanel.Dock="Bottom" Height="50">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <Button Margin="10" Command="{Binding LoadedCommand}" >Loaded</Button>
+                <Button Margin="10" Command="{Binding RemoveAskCommand}">Remove</Button>
+                
+            </StackPanel>
 
+        </Grid>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="250"/>
+            </Grid.ColumnDefinitions>
+
+            <DataGrid Grid.Column="0"
+                      x:Name="DataTable"
+                      ItemsSource="{Binding Asks}"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      SelectedItem="{Binding SelectedAsk}">
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Path=NameSeller}"
+                                        Header="Name Seller"
+                                        Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Path=NameProduct}"
+                                        Header="Name Product"
+                                        Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Path=Weight}"
+                                        Header="Weight"
+                                        Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Path=Price}"
+                                        Header="Price"
+                                        Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <Grid Grid.Column="1">
+                <DockPanel>
+                    <Button DockPanel.Dock="Bottom"
+                            Margin="80"
+                            Command="{Binding AddAskCommand}">Add</Button>
+                    <StackPanel Margin="10">
+                        <DockPanel Margin="10">
+                            <TextBox DockPanel.Dock="Right"
+                                     Width="100"
+                                     Text="{Binding NameSeller}"/>
+                            <TextBlock Text="Name Seller"/>
+                        </DockPanel>
+                        <DockPanel Margin="10">
+                            <TextBox DockPanel.Dock="Right"
+                                     Width="100"
+                                     Text="{Binding NameProduct}"/>
+                            <TextBlock Text="Name Product"/>
+                        </DockPanel>
+                        <DockPanel Margin="10">
+                            <TextBox DockPanel.Dock="Right"
+                                     Width="100"
+                                     Text="{Binding Weight}"/>
+                            <TextBlock Text="Weight"/>
+                        </DockPanel>
+                        <DockPanel Margin="10">
+                            <TextBox DockPanel.Dock="Right"
+                                     Width="100"
+                                     Text="{Binding Price}"/>
+                            <TextBlock Text="Price"/>
+                        </DockPanel>
+                    </StackPanel>
+                </DockPanel>
+            </Grid>
+        </Grid>
+    </DockPanel>
 </Window>

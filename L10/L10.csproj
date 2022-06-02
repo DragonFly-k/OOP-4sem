@@ -81,10 +81,13 @@
     <Compile Include="db\model\Icon.cs" />
     <Compile Include="db\model\Product.cs" />
     <Compile Include="db\model\ProductService.cs" />
+    <Compile Include="db\model\Seller.cs" />
     <Compile Include="db\Repositories\ProductRepository.cs" />
+    <Compile Include="db\Repositories\SellerRepository.cs" />
     <Compile Include="db\UnitOfWork.cs" />
     <Compile Include="Infrastructure\Commands\Base\Command.cs" />
     <Compile Include="Infrastructure\Commands\LambdaCommand.cs" />
+    <Compile Include="Model\Ask.cs" />
     <Compile Include="Model\ProductInfo.cs" />
     <Compile Include="ViewModels\Base\ViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
@@ -111,11 +114,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Content Include="fonts\FontAwesome.otf" />
-    <Content Include="fonts\fontawesome-webfont.ttf" />
-    <Content Include="fonts\fontawesome-webfont.eot" />
-    <Content Include="fonts\fontawesome-webfont.woff" />
-    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="Infrastructure\fonts\FontAwesome.otf" />
+    <Content Include="Infrastructure\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Infrastructure\fonts\fontawesome-webfont.eot" />
+    <Content Include="Infrastructure\fonts\fontawesome-webfont.woff" />
+    <Content Include="Infrastructure\fonts\fontawesome-webfont.woff2" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -128,7 +131,7 @@
   <ItemGroup>
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
-    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="Infrastructure\fonts\fontawesome-webfont.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

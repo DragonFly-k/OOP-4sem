@@ -12,6 +12,7 @@ namespace L10.db
     {
         private ApplicationContext _db = new ApplicationContext();
         private ProductRepository _productRepository;
+        private SellerRepository _sellerRepository;
 
         public ProductRepository Products
         {
@@ -23,6 +24,19 @@ namespace L10.db
                 }
 
                 return _productRepository;
+            }
+        }
+
+        public SellerRepository Sellers
+        {
+            get
+            {
+                if (_sellerRepository == null)
+                {
+                    _sellerRepository = new SellerRepository(_db);
+                }
+
+                return _sellerRepository;
             }
         }
 

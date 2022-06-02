@@ -14,5 +14,6 @@ namespace L10.db
         { }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<Seller> Sellers { get; set; }
     }
 }

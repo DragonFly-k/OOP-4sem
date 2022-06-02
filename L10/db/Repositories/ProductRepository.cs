@@ -43,14 +43,16 @@ namespace L10.db.Repositories
 
         public IEnumerable<Product> GetAll()
         {
-            return _db.Products;
+            return _db.Products.Include("Seller");
         }
         public Product Update(Product oldEntity, Product entity)
         {
             var dest = _db.Products.Find(oldEntity);
+
+            dest.Seller = entity.Seller;
             dest.Name = entity.Name;
+            dest.Price = entity.Price;
             dest.Weight = entity.Weight;
-            dest.Qty = entity.Qty;
 
             return dest;
         }
